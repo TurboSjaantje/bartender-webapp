@@ -70,4 +70,5 @@ jobs:
           app-name: 'bartender-app'
           slot-name: 'Production'
           package: "./bartender-webapp/dist/bartender-webapp"
+          deployment-method: 'zip'
           
