@@ -69,5 +69,5 @@ jobs:
         with:
           app-name: 'bartender-app'
           slot-name: 'Production'
-          package: "./dist/bartender-webapp"
+          package: "./bartender-webapp/dist/bartender-webapp"
           
