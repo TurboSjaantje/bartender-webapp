@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "./bartender-app/dist/bartender-webapp/browser",
+            "outputPath": "./dist/bartender-webapp/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
