@@ -17,7 +17,7 @@ export class AuthService {
     private readonly HEADERS = new HttpHeaders({ 'Content-Type': 'application/json' });
     private readonly API_URL = environment.apiUrl;
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router) {}
 
     private saveUserToLocalStorage(token: string) {
         localStorage.setItem(this.CURRENT_USER, token);
