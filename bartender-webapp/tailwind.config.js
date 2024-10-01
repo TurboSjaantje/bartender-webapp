@@ -16,6 +16,11 @@ module.exports = {
           light: '#007649', // Indigo-300
           dark: '#007649',  // Indigo-800
         },
+        background: {
+          DEFAULT: '#003f27', // Gray-100
+          light: '#003f27', // Gray-200
+          dark: '#003f27',  // Gray-800
+        }
       },
     },
   },
