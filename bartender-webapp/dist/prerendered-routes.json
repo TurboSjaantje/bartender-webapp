@@ -1,7 +1,11 @@
 {
   "routes": [
     "/",
+    "/dashboard",
+    "/drinks",
     "/home",
-    "/login"
+    "/login",
+    "/mixer",
+    "/settings"
   ]
 }

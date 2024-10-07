@@ -4,3 +4,119 @@
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black self-end m-3 mr-4">Settings</h5>
     </div>
 </div>
+
+<div class="mobile-container block sm:hidden p-2">
+    <!-- Responsive form container for mobile -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <!-- Button to set all bottles to 1500mL -->
+        <div class="mb-6">
+            <button (click)="setAllBottlesToFull()"
+                class="w-full bg-primary hover:bg-white hover:text-primary hover:border border-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                Set All Bottles to Full (1500mL)
+            </button>
+        </div>
+
+        <!-- Form for selecting a drink and setting its volume for each bottle -->
+        <form [formGroup]="settingsForm">
+            <div *ngFor="let bottleControl of bottlesArray.controls; let i = index" [formGroupName]="i">
+                <!-- Drink Selection -->
+                <div class="mb-6">
+                    <label for="drink" class="block text-lg font-semibold text-gray-600">Bottle {{ i + 1 }}: {{ bottleControl.get('name')?.value }}</label>
+                    <select formControlName="id"
+                        class="block w-full px-4 py-2 border border-gray-300 bg-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                        <option value="">Select a drink</option>
+                        <option *ngFor="let bottle of config_drinks" [value]="bottle.id">{{ bottle.name }}</option>
+                    </select>
+                </div>
+
+                <!-- Volume Selection -->
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold text-gray-600">Set Bottle Volume</label>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center">
+                            <input type="radio" formControlName="volume" value="1000"
+                                class="form-radio text-primary focus:ring-primary">
+                            <span class="ml-2">1000 mL</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" formControlName="volume" value="1500"
+                                class="form-radio text-primary focus:ring-primary" checked>
+                            <span class="ml-2">1500 mL</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" formControlName="volume" value="2000"
+                                class="form-radio text-primary focus:ring-primary">
+                            <span class="ml-2">2000 mL</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="mt-6">
+                <button (click)="saveSettings()"
+                    class="w-full bg-primary hover:bg-white hover:text-primary hover:border border-primary text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition">
+                    Save Settings
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="desktop-container hidden sm:block ml-64 p-2 mt-2">
+    <!-- Responsive form container for desktop -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <!-- Button to set all bottles to 1500mL -->
+        <div class="mb-6">
+            <button (click)="setAllBottlesToFull()"
+                class="w-full bg-primary hover:bg-white hover:text-primary hover:border border-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                Set All Bottles to Full (1500mL)
+            </button>
+        </div>
+
+        <!-- Form for selecting a drink and setting its volume for each bottle -->
+        <form [formGroup]="settingsForm">
+            <div *ngFor="let bottleControl of bottlesArray.controls; let i = index" [formGroupName]="i">
+                <!-- Drink Selection -->
+                <div class="mb-6">
+                    <label for="drink" class="block text-lg font-semibold text-gray-600">Bottle {{ i + 1 }}: {{ bottleControl.get('name')?.value }}</label>
+                    <select formControlName="id"
+                        class="block w-full px-4 py-2 border border-gray-300 bg-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                        <option value="">Select a drink</option>
+                        <option *ngFor="let bottle of config_drinks" [value]="bottle.id">{{ bottle.name }}</option>
+                    </select>
+                </div>
+
+                <!-- Volume Selection -->
+                <div class="mb-6">
+                    <label class="block text-lg font-semibold text-gray-600">Set Bottle Volume</label>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center">
+                            <input type="radio" formControlName="volume" value="1000"
+                                class="form-radio text-primary focus:ring-primary">
+                            <span class="ml-2">1000 mL</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" formControlName="volume" value="1500"
+                                class="form-radio text-primary focus:ring-primary" checked>
+                            <span class="ml-2">1500 mL</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" formControlName="volume" value="2000"
+                                class="form-radio text-primary focus:ring-primary">
+                            <span class="ml-2">2000 mL</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="mt-6">
+                <button (click)="saveSettings()"
+                    class="w-full bg-primary hover:bg-white hover:text-primary hover:border border-primary text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition">
+                    Save Settings
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

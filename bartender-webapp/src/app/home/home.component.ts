@@ -5,6 +5,7 @@ import { NavComponent } from '../nav/nav.component';
 import { CardComponent } from '../card/card.component';
 import { ApiService } from '../drinks/drinks.service';
 import { Route, Router, RouterFeature } from '@angular/router';
+import { AuthService } from '../login/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent {
 
   drinks: any = [];
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.apiService.get<any>('mocktail').subscribe(
@@ -33,5 +34,9 @@ export class HomeComponent {
 
   goToDetailPage(drinkId: number) {
     this.router.navigate(['/drink', drinkId]);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

@@ -6,19 +6,105 @@
 </div>
 <div class="mobile-container block sm:hidden p-2">
     <div class="grid grid-cols-2 gap-4">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a href="drinks">
+                <img class="p-4 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3076914-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a href="drinks">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Drinks</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a href="mixer">
+                <img class="p-10 rounded-t-lg w-full" src="https://static.thenounproject.com/png/785788-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a href="mixer">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Mixer</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a href="settings">
+                <img class="p-10 rounded-t-lg w-full" src="https://static.thenounproject.com/png/1187812-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a href="settings">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Settings</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a (click)="logout()">
+                <img class="p-10 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3255232-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a (click)="logout()">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Logout</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
     </div>
 </div>
 <div class="desktop-container hidden sm:block ml-64 p-2 mt -2">
     <div class="grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a href="drinks">
+                <img class="p-10 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3076914-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a href="drinks">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Drinks</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a href="mixer">
+                <img class="p-20 rounded-t-lg w-full" src="https://static.thenounproject.com/png/785788-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a href="mixer">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Mixer</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a href="settings">
+                <img class="p-20 rounded-t-lg w-full" src="https://static.thenounproject.com/png/1187812-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a href="settings">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Settings</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
+        <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow">
+            <a (click)="logout()">
+                <img class="p-20 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3255232-200.png"
+                    alt="" />
+            </a>
+            <div class="p-5 bg-primary rounded-b-lg">
+                <a (click)="logout()">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-center text-white">Logout</h5>
+                </a>
+                <p class="leading-none mb-3 font-normal text-white"></p>
+            </div>
+        </div>
     </div>
 </div>

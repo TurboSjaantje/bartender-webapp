@@ -1,0 +1,49 @@
+/* Custom styling for the slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px; /* Adjust height for a sleek line */
+    border-radius: 5px;
+    outline: none;
+}
+
+/* The full slider track (unfilled) */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #d1d5db; /* Tailwind's gray-300 for the unfilled part */
+    border-radius: 5px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: #d1d5db;
+    border-radius: 5px;
+}
+
+/* The slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: #005b37; /* Custom green color for the thumb */
+    border-radius: 50%;
+    cursor: pointer;
+    /* move up a bit */
+    margin-top: -5px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #005b37;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Focus and Hover Effects */
+input[type="range"]:hover::-webkit-slider-thumb, 
+input[type="range"]:focus::-webkit-slider-thumb {
+    background-color: #004128; /* Darker green on hover */
+}
