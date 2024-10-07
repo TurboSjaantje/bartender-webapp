@@ -13,6 +13,7 @@ import { Credentials } from './login.model';
 export class AuthService {
 
     public currentUser$ = new BehaviorSubject<string | undefined>(undefined);
+    public initialized$ = new BehaviorSubject<boolean>(false); // Track initialization
     private readonly CURRENT_USER = 'currentuser';
     private readonly HEADERS = new HttpHeaders({ 'Content-Type': 'application/json' });
     private readonly API_URL = environment.apiUrl;
@@ -25,29 +26,6 @@ export class AuthService {
         localStorage.setItem(this.CURRENT_USER, JSON.stringify(token));
     }
 
-    private isLocalStorageAvailable(): boolean {
-        try {
-            const testKey = '__test__';
-            localStorage.setItem(testKey, testKey);
-            localStorage.removeItem(testKey);
-            return true;
-        } catch (e) {
-            return false;
-        }
-    }
-
-    getUserFromLocalStorage(): Observable<string | undefined> {
-        if (typeof localStorage !== 'undefined') {
-            const user = localStorage.getItem(this.CURRENT_USER);
-            if (user) {
-                const localUser = JSON.parse(user);
-                return of(localUser);
-            }
-        }
-        return of(undefined);
-    }
-
-
     getAuthorizationToken(): string | undefined {
         const user = localStorage.getItem(this.CURRENT_USER);
         if (user) {
@@ -57,15 +35,15 @@ export class AuthService {
         return undefined;
     }
 
-    // Automatisch inloggen als er een token in localStorage staat
     autoLogin() {
         if (this.isLocalStorageAvailable()) {
             const token = localStorage.getItem(this.CURRENT_USER);
             if (token) {
                 const localUser = JSON.parse(token);
-                this.currentUser$.next(localUser); // Update huidige gebruiker
+                this.currentUser$.next(localUser); // Update current user
             }
         }
+        this.initialized$.next(true); // Signal that initialization is complete
     }
 
     login(formData: Credentials): Observable<any> {
@@ -86,16 +64,22 @@ export class AuthService {
     }
 
     logout() {
-        console.log('Logging out');
-        this.router.navigate(['/login'])
-            .then((success) => {
-                if (success) {
-                    localStorage.removeItem(this.CURRENT_USER);
-                    this.currentUser$.next(undefined);
-                } else {
-                    console.log('Error logging out');
-                }
-            }).catch((error) => { console.log('Error logging out'); });
+        this.router.navigate(['/login']).then((success) => {
+            if (success) {
+                localStorage.removeItem(this.CURRENT_USER);
+                this.currentUser$.next(undefined);
+            }
+        });
     }
 
+    private isLocalStorageAvailable(): boolean {
+        try {
+            const testKey = '__test__';
+            localStorage.setItem(testKey, testKey);
+            localStorage.removeItem(testKey);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
 }

@@ -1,0 +1,73 @@
+<div class="mobile-container block sm:hidden p-2">
+    <div class="grid grid-cols-1 gap-4">
+        <div class="w-full sm:max-w-sm bg-white rounded-lg relative">
+            <div class="grid grid-cols-1 gap-4">
+                <div class="col-span-1">
+                    <a href="#">
+                        <img class="p-4 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3076914-200.png"
+                            alt="Drink Image" />
+                    </a>
+                </div>
+                <div class="p-5 text-black rounded-b-lg col-span-1">
+                    <a href="#">
+                        <h5 class="mb-4 text-4xl font-bold tracking-tight">{{ drink.name }}</h5>
+                    </a>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight">
+                        Ingredients:
+                        <br>
+                    </h5>
+                    <ul>
+                        <li *ngFor="let perc of drink.drinks" class="leading-none mb-3 font-normal">
+                            {{ perc.drink.name }}: {{ perc.percentage }}%
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-span-1 mt-10">
+                    <a href="home"> <button
+                            class="inline-flex focus:border border-background items-center hover:text-background px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white   absolute bottom-4 left-4">
+                            Back
+                        </button></a>
+                    <button (click)="makeDrink()"
+                        class="inline-flex focus:border border-background  items-center hover:text-background px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white   absolute bottom-4 right-4">
+                        Make Drink
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="desktop-container hidden sm:block ml-64 p-2">
+    <div class="grid grid-cols-2 gap-4 p-10">
+        <div class="col-span-1 flex justify-center">
+                <img class="p-4 rounded-t-lg" width="500px" src="https://static.thenounproject.com/png/3076914-200.png"
+                    alt="Drink Image" />
+          
+        </div>
+        <div class="py-10 text-black rounded-b-lg col-span-1">
+            <a href="#">
+                <h5 class="mb-4 text-4xl font-bold tracking-tight">{{ drink.name }}</h5>
+            </a>
+            <h5 class="mb-2 text-xl font-bold tracking-tight">
+                Ingredients:
+                <br>
+            </h5>
+            <ul>
+                <li *ngFor="let perc of drink.drinks" class="leading-none mb-3 font-normal">
+                    {{ perc.drink.name }}: {{ perc.percentage }}%
+                </li>
+            </ul>
+            <div class="col-span-1 mt-60">
+                <a href="home"> <button
+                        class="inline-flex items-center hover:border border-background hover:text-background mr-2 px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white  ">
+                        Back
+                    </button></a>
+                <button (click)="makeDrink()"
+                    class="inline-flex items-center hover:border border-background hover:text-background px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white  ">
+                    Make Drink
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
