@@ -1,25 +1,44 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
-import { map, Observable } from "rxjs";
-import { AuthService } from "./authentication.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private _authService: AuthService, private _router: Router) { }
+    private readonly CURRENT_USER = 'currentuser';
 
-    canActivate(): Observable<boolean> {
-        return this._authService.currentUser$.pipe(
-            map((token: string | undefined) => {
-                if (token) {
-                    console.log('Token found, user is logged in');
-                    return true;
-                } else {
-                    console.log('Token not found, user is not logged in');
-                    this._router.navigate(['/login']);
-                    return false;
-                }
-            })
-        );
+    constructor(private router: Router) {}
+
+    canActivate(): boolean {
+        // Check if window and localStorage are available (i.e., running in the browser)
+        if (this.isBrowserEnvironment()) {
+            const token = this.getAuthorizationTokenFromLocalStorage();
+
+            if (token) {
+                // If token is found, allow route activation
+                return true;
+            } else {
+                // If no token is found, redirect to login
+                this.router.navigate(['/login']);
+                return false;
+            }
+        } else {
+            // If not in the browser, deny access
+            return false;
+        }
+    }
+
+    // Utility function to check if running in the browser
+    private isBrowserEnvironment(): boolean {
+        return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+    }
+
+    // Utility function to get token from localStorage
+    private getAuthorizationTokenFromLocalStorage(): string | null {
+        const storedUser = localStorage.getItem(this.CURRENT_USER);
+        if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            return parsedUser.token || null;
+        }
+        return null;
     }
 }

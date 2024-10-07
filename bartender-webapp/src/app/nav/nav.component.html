@@ -11,8 +11,7 @@
       </button>
    </div>
    <div class="col-span-4 flex items- justify-end">
-      <span id="content" class="self-center text-xl font-bold whitespace-nowrap text-gray-900 ml-3 mt-1 mr-5">SmartBartender&trade;
-      </span>
+     
    </div>
 </div>
 
@@ -26,15 +25,15 @@
             fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
          </svg>
-         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-3">SmartBartender&trade;
+         <span class="self-center text-xl text-white font-semibold whitespace-nowrap dark:text-white ml-3">SmartBartender&trade;
          </span>
       </a>
 
       <!-- Main navigation items -->
       <ul class="space-y-2 font-medium flex-grow">
          <li>
-            <a href="#"
-               class="flex items-center p-2 text-white-900 rounded-lg dark:text-white hover:bg-white hover:text-background dark:hover:bg-white group">
+            <a href="home"
+               class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-white hover:text-background dark:hover:bg-white group">
                <svg class="w-[26px] h-[26px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                   height="24" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -46,8 +45,8 @@
             </a>
          </li>
          <li>
-            <a href="#"
-               class="flex items-center p-2 text-white-900 rounded-lg dark:text-white hover:bg-white hover:text-background dark:hover:bg-white group">
+            <a href="drinks"
+               class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-white hover:text-background dark:hover:bg-white group">
                <svg class="w-[26px] h-[26px] text-sm" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                   height="24" fill="currentColor" viewBox="0 0 24 24">
                   <path fill-rule="evenodd"
@@ -59,7 +58,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a href="mixer"
                class="flex items-center p-2 text-white rounded-lg hover:bg-white hover:text-background hover:bg-white">
                <svg class="w-[26px] h-[26px] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                   height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -71,7 +70,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a href="settings"
                class="flex items-center p-2 text-white rounded-lg hover:bg-white hover:text-background hover:bg-white">
                <svg class="w-[26px] h-[26px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                   height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -87,8 +86,8 @@
       </ul>
 
       <!-- Align User and Log out buttons at the bottom -->
-      <ul class="mt-auto space-y-2">
-         <li>
+      <ul class="mt-auto space-y-2 font-medium">
+         <!-- <li>
             <a href="#"
                class="flex items-center p-2 text-white rounded-lg hover:bg-white hover:text-background dark:hover:bg-white">
                <svg class="w-[26px] h-[26px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -98,19 +97,19 @@
                      clip-rule="evenodd" />
                </svg>
 
-               <span class="flex-1 ms-3 whitespace-nowrap">User</span>
+               <span class="flex-1 ms-3 whitespace-nowrap"></span>
             </a>
-         </li>
+         </li> -->
          <li>
             <a (click)="logout()"
                class="flex items-center p-2 text-white-900 rounded-lg dark:text-white hover:bg-white hover:text-background dark:hover:bg-white group">
                <svg
-                  class="w-5 h-5 text-white-500 transition duration-75 dark:text-white-400 hover:bg-white hover:text-background"
+                  class="w-5 h-5 text-white transition duration-75 dark:text-white-400 hover:bg-white hover:text-background"
                   aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                      d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
                </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">Log out</span>
+               <span class="flex-1 ms-3 text-white whitespace-nowrap">Log out</span>
             </a>
          </li>
       </ul>

@@ -1,0 +1,47 @@
+<app-nav></app-nav>
+<div class="mobile-container block sm:hidden p-2">
+    <div class="grid grid-cols-2 gap-4">
+        <div *ngFor="let drink of drinks">
+            <div class="grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+                <div class="w-full sm:max-w-sm bg-white border rounded-lg cursor-pointer"
+                    (click)="goToDetailPage(drink.id)">
+                    <a (click)="goToDetailPage(drink.id)">
+                        <img class="p-4 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3076914-200.png"
+                            alt="" />
+                    </a>
+                    <div class="p-5 bg-primary rounded-b-lg">
+                        <a (click)="goToDetailPage(drink.id)">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{{drink.name}}</h5>
+                        </a>
+                        <p *ngFor="let perc of drink.drinks" class="leading-none mb-3 font-normal text-white">
+                            {{perc.percentage}}% {{perc.drink.name}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="desktop-container hidden sm:block ml-64 p-2">
+    <div class="grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+        <div *ngFor="let drink of drinks">
+
+            <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow cursor-pointer"
+                (click)="goToDetailPage(drink.id)">
+                <a (click)="goToDetailPage(drink.id)">
+                    <img class="p-4 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3076914-200.png"
+                        alt="" />
+                </a>
+                <div class="p-5 bg-primary rounded-b-lg">
+                    <a (click)="goToDetailPage(drink.id)">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{{drink.name}}</h5>
+                    </a>
+                    <p *ngFor="let perc of drink.drinks" class="leading-none mb-3 font-normal text-white">
+                        {{perc.percentage}}% {{perc.drink.name}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

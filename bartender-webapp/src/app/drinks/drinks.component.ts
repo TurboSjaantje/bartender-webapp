@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { CommonModule } from '@angular/common';
+import { ApiService } from './drinks.service';
 import { NavComponent } from '../nav/nav.component';
-import { CardComponent } from '../card/card.component';
-import { ApiService } from '../drinks/drinks.service';
-import { Route, Router, RouterFeature } from '@angular/router';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-drinks',
   standalone: true,
-  imports: [NgIconComponent, NavComponent, CardComponent, CommonModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  imports: [NavComponent, CommonModule],
+  templateUrl: './drinks.component.html',
+  styleUrl: './drinks.component.css'
 })
-export class HomeComponent {
+export class DrinksComponent {
 
   drinks: any = [];
 
@@ -34,4 +32,5 @@ export class HomeComponent {
   goToDetailPage(drinkId: number) {
     this.router.navigate(['/drink', drinkId]);
   }
+
 }

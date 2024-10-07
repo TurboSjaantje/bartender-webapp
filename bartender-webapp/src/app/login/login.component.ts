@@ -27,16 +27,10 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
 
-    // Auto-login if a token is found in localStorage
-    this.authService.getUserFromLocalStorage().subscribe({
-      next: (user) => {
-        if (user) {
-          // If a token is found, navigate to the home page (or any protected route)
-          this.router.navigate(['/home']);
-        }
-      },
-      error: (err) => {
-        this.errormessage = err.message;
+    // Auto-login if a user token exists in localStorage
+    this.authService.currentUser$.subscribe(user => {
+      if (user) {
+        this.router.navigate(['/home']); // Navigate if already logged in
       }
     });
   }
