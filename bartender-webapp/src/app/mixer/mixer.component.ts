@@ -84,15 +84,14 @@ export class MixerComponent {
     const mixerData = this.drinks.map((drink, i) => {
       const selectedDrinkId = this.mixerForm.get(`drink${i}`)?.value;
       const selectedDrinkAmount = this.drinkAmounts[i];
-      
+
       if (selectedDrinkAmount > 0 && selectedDrinkId) {
         const selectedDrink = this.config_drinks.find(d => d.id == +selectedDrinkId);
 
         if (selectedDrink) {
           return {
             id: selectedDrink.id,
-            name: selectedDrink.name,
-            amount: selectedDrinkAmount
+            percentage: selectedDrinkAmount
           };
         }
       }
@@ -100,5 +99,22 @@ export class MixerComponent {
     }).filter(drink => drink !== null);
 
     console.log('Mixer Data (Drinks with non-zero amounts):', mixerData);
+
+    //send the drink to the API
+    let data = {
+      name: this.mixerForm.get('name')?.value,
+      drinks: mixerData
+    }
+
+    console.log('Data to send:', data);
+
+    this.apiService.post<any>('Mocktail', data).subscribe(
+      (response) => {
+        console.log('POST response:', response);
+      },
+      (error) => {
+        console.log('POST error:', error);
+      }
+    );
   }
 }
