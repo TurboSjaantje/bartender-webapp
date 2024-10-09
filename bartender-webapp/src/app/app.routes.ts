@@ -15,5 +15,5 @@ export const routes: Routes = [
     { path: 'drinks', component: DrinksComponent, canActivate: [AuthGuard] },
     { path: 'mixer', component: MixerComponent, canActivate: [AuthGuard] },
     { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
-    { path: 'drink/:id', component: DrinkDetailComponent, canActivate: [AuthGuard] },
+    { path: 'drink/:id', component: DrinkDetailComponent, canActivate: [AuthGuard] }
 ];

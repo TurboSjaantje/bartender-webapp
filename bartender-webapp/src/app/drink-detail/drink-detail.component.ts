@@ -15,12 +15,14 @@ import { DrinkService } from './drink.service';
 export class DrinkDetailComponent {
 
   drink: any = {};
+  id: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private apiService: ApiService, private drinkService: DrinkService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
+      this.id = id;
       if (id) {
         this.getDrinkById(+id);
       }
@@ -41,7 +43,7 @@ export class DrinkDetailComponent {
 
   makeDrink() {
     const drinkName = this.drink.name;  // Ensure you are extracting only the name field
-  
+
     this.drinkService.makeDrink(drinkName).subscribe(
       (response) => {
         console.log('POST response:', response);
@@ -50,6 +52,21 @@ export class DrinkDetailComponent {
         console.log('POST error:', error);
       }
     );
-  }  
+  }
 
+  deleteDrink() {
+    //create delete json request
+    const drinkName = this.drink.name;  // Ensure you are extracting only the name field
+
+    this.apiService.delete<any>('mocktail/' + this.id).subscribe(
+      (response) => {
+        console.log('DELETE response:', response);
+        this.router.navigate(['/drinks']);
+      },
+      (error) => {
+        console.log('DELETE error:', error
+        )
+      }
+    );
+  }
 }

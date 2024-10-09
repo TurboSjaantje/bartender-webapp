@@ -3,6 +3,7 @@ import { NavComponent } from '../nav/nav.component';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; // Added Validators
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../drinks/drinks.service';
+import { Router } from '@angular/router';
 
 
 class configbottle {
@@ -25,7 +26,7 @@ export class MixerComponent {
   maxTotal = 100; // Maximum allowed total (percentage)
   config_drinks: configbottle[] = [];
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {
     // Use Validators.required for the name field to ensure it's filled
     this.mixerForm = this.fb.group({
       name: ['', Validators.required], // Name is required
@@ -111,6 +112,7 @@ export class MixerComponent {
     this.apiService.post<any>('Mocktail', data).subscribe(
       (response) => {
         console.log('POST response:', response);
+        this.router.navigate(['/drinks']);
       },
       (error) => {
         console.log('POST error:', error);
