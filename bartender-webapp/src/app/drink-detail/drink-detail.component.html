@@ -1,76 +1,81 @@
-<div class="mobile-container block sm:hidden p-2">
-    <div class="grid grid-cols-1 gap-4">
-      <div class="w-full sm:max-w-sm bg-white rounded-lg relative">
-        <div class="grid grid-cols-1 gap-4">
-          <div class="col-span-1">
-            <a href="#">
-              <img class="p-4 rounded-t-lg w-full" src="https://static.thenounproject.com/png/3076914-200.png" alt="Drink Image" />
-            </a>
-          </div>
-          <div class="p-5 text-black rounded-b-lg col-span-1">
-            <a href="#">
-              <h5 class="mb-4 text-4xl font-bold tracking-tight">{{ drink.name }}</h5>
-            </a>
-            <h5 class="mb-2 text-xl font-bold tracking-tight">
-              Ingredients:
-              <br />
-            </h5>
-            <ul>
-              <li *ngFor="let perc of drink.drinks" class="leading-none mb-3 font-normal">
-                {{ perc.drink.name }}: {{ perc.percentage }}%
-              </li>
-            </ul>
-          </div>
-          <div class="col-span-1 mt-10 flex justify-between">
-            <a href="drinks">
-              <button class="inline-flex focus:border border-background items-center hover:text-background px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white">
-                Back
-              </button>
-            </a>
-            <button (click)="deleteDrink()" class="inline-flex focus:border border-background items-center hover:text-background px-3 bg-red-500 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-red-700">
-              Delete
-            </button>
-            <button (click)="makeDrink()" class="inline-flex focus:border border-background items-center hover:text-background px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white">
-              Make Drink
-            </button>
-          </div>
-        </div>
-      </div>
+<div class="mobile-container block sm:hidden p-4">
+  <div class="w-full bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="relative">
+      <!-- Drink Image -->
+      <a href="#">
+        <img class="rounded-t-lg w-full object-cover" src="https://static.thenounproject.com/png/3076914-200.png"
+          alt="Drink Image" />
+      </a>
+    </div>
+    <!-- Drink Details -->
+    <div class="p-6 text-black">
+      <h5 class="text-3xl font-bold mb-3">{{ drink.name }}</h5>
+      <h6 class="text-xl font-semibold mb-2">Ingredients:</h6>
+      <ul class="mb-4">
+        <li *ngFor="let perc of drink.drinks" class="text-md mb-2">{{ perc.drink.name }}: {{ perc.percentage }}%</li>
+      </ul>
+    </div>
+    <!-- Action Buttons -->
+    <div class="p-6 border-t space-y-4">
+      <a href="drinks">
+        <button class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition"
+          [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': true, 'bg-gray-400 text-gray-700 cursor-not-allowed': false}">
+          Back
+        </button>
+      </a>
+      <button (click)="deleteDrink()" class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition"
+        [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': true, 'bg-gray-400 text-gray-700 cursor-not-allowed': false}">
+        Delete
+      </button>
+
+      <button (click)="makeDrink()" [disabled]="!canMakeDrink()"
+        class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition"
+        [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': canMakeDrink(), 'bg-gray-400 text-gray-700 cursor-not-allowed': !canMakeDrink()}">
+        Make Drink
+      </button>
+
     </div>
   </div>
-  
-  <div class="desktop-container hidden sm:block ml-64 p-2">
-    <div class="grid grid-cols-2 gap-4 p-10">
-      <div class="col-span-1 flex justify-center">
-        <img class="p-4 rounded-t-lg" width="500px" src="https://static.thenounproject.com/png/3076914-200.png" alt="Drink Image" />
+</div>
+<div class="desktop-container hidden sm:block p-8">
+  <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="grid grid-cols-2 gap-8">
+      <!-- Drink Image -->
+      <div class="flex justify-center items-center p-8">
+        <img class="rounded-lg w-full max-w-md object-cover" src="https://static.thenounproject.com/png/3076914-200.png"
+          alt="Drink Image" />
       </div>
-      <div class="py-10 text-black rounded-b-lg col-span-1">
-        <a href="#">
-          <h5 class="mb-4 text-4xl font-bold tracking-tight">{{ drink.name }}</h5>
-        </a>
-        <h5 class="mb-2 text-xl font-bold tracking-tight">
-          Ingredients:
-          <br />
-        </h5>
-        <ul>
-          <li *ngFor="let perc of drink.drinks" class="leading-none mb-3 font-normal">
-            {{ perc.drink.name }}: {{ perc.percentage }}%
-          </li>
-        </ul>
-        <div class="col-span-1 mt-10 flex space-x-4">
+      <!-- Drink Details -->
+      <div class="p-8 text-black flex flex-col justify-between">
+        <div>
+          <h5 class="text-5xl font-bold mb-4">{{ drink.name }}</h5>
+          <h6 class="text-2xl font-semibold mb-2">Ingredients:</h6>
+          <ul class="mb-6">
+            <li *ngFor="let perc of drink.drinks" class="text-lg mb-2">{{ perc.drink.name }}: {{ perc.percentage }}%
+            </li>
+          </ul>
+        </div>
+        <!-- Action Buttons -->
+        <div class="mt-8 space-y-4">
           <a href="drinks">
-            <button class="inline-flex items-center hover:border border-background hover:text-background px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white">
+            <button class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition"
+              [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': true, 'bg-gray-400 text-gray-700 cursor-not-allowed': false}">
               Back
             </button>
           </a>
-          <button (click)="makeDrink()" class="inline-flex items-center hover:border border-background hover:text-background px-3 bg-background py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white">
-            Make Drink
-          </button>
-          <button (click)="deleteDrink()" class="inline-flex items-center hover:border border-red-500 hover:text-red-500 px-3 bg-red-500 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-white">
+          <button (click)="deleteDrink()" class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition"
+            [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': true, 'bg-gray-400 text-gray-700 cursor-not-allowed': false}">
             Delete
           </button>
+
+          <button (click)="makeDrink()" [disabled]="!canMakeDrink()"
+            class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition"
+            [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': canMakeDrink(), 'bg-gray-400 text-gray-700 cursor-not-allowed': !canMakeDrink()}">
+            Make Drink
+          </button>
+
         </div>
       </div>
     </div>
   </div>
-  
+</div>

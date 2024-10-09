@@ -6,15 +6,17 @@ import { AuthService } from '../login/authentication.service';
   standalone: true,
   imports: [],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrls: ['./nav.component.css']
 })
-
 export class NavComponent {
 
   public isLoggedIn: boolean = false;
   sidebarOpen: boolean = false;
+  isMobile: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    this.checkScreenSize();
+  }
 
   nGOnChanges() {
     if (this.authService.getAuthorizationToken() == undefined) {
@@ -27,10 +29,12 @@ export class NavComponent {
     this.authService.logout();
   }
 
-  // Toggles the sidebar's open/close state
+  // Toggles the sidebar's open/close state (only works on mobile)
   toggleSidebar(event: Event): void {
-    event.stopPropagation(); // Prevent the sidebar from closing immediately
-    this.sidebarOpen = !this.sidebarOpen;
+    if (this.isMobile) {
+      event.stopPropagation(); // Prevent the sidebar from closing immediately
+      this.sidebarOpen = !this.sidebarOpen;
+    }
   }
 
   // Detects clicks outside the sidebar to close it
@@ -39,7 +43,7 @@ export class NavComponent {
     const sidebar = document.getElementById('logo-sidebar');
     const toggleButton = document.getElementById('toggleSidebar');
 
-    if (this.sidebarOpen && sidebar && toggleButton) {
+    if (this.sidebarOpen && this.isMobile && sidebar && toggleButton) {
       const targetElement = event.target as HTMLElement;
 
       // Check if the click was outside both the sidebar and the toggle button
@@ -49,4 +53,17 @@ export class NavComponent {
     }
   }
 
+  // Detects window resizing to determine if the screen is mobile size or not
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkScreenSize();
+  }
+
+  // Checks the current screen size to set the `isMobile` flag
+  checkScreenSize(): void {
+    this.isMobile = window.innerWidth < 640;  // Tailwind's 'sm' breakpoint is 640px
+    if (!this.isMobile) {
+      this.sidebarOpen = true; // Ensure the sidebar is always open on desktop
+    }
+  }
 }

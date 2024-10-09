@@ -1,10 +1,12 @@
-<div class="grid grid-cols-5">
+<div class="fixed top-0 grid grid-cols-5 bg-white pb-2">
     <app-nav class="col-span-1"></app-nav>
     <div class="col-span-4 flex items-stretch justify-end">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black self-end m-3 mr-4">Drinks</h5>
     </div>
 </div>
-<div class="mobile-container block sm:hidden p-2">
+
+<!-- Mobile Container -->
+<div class="mobile-container block sm:hidden p-5">
     <div class="grid grid-cols-2 gap-4">
         <div *ngFor="let drink of drinks">
             <div class="grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
@@ -27,10 +29,11 @@
         </div>
     </div>
 </div>
-<div class="desktop-container hidden sm:block ml-64 p-2 mt -2">
+
+<!-- Desktop Container -->
+<div class="desktop-container hidden sm:block ml-64 p-2 mt-2">
     <div class="grid md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
         <div *ngFor="let drink of drinks">
-
             <div class="w-full sm:max-w-sm bg-white border rounded-lg shadow cursor-pointer"
                 (click)="goToDetailPage(drink.id)">
                 <a (click)="goToDetailPage(drink.id)">
@@ -48,4 +51,11 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Checkbox at the Bottom -->
+<div class="fixed bottom-0 right-0 m-2 py-3 px-4 bg-primary rounded-lg flex items-center">
+    <h5 class="font-bold text-white mr-2">Show all drinks</h5>
+    <input type="checkbox" [checked]="showAll" (change)="toggleShowAll()"
+        class="bg-primary text-white font-bold py-3 px-6 flex justify-end focus:outline-none transition">
 </div>

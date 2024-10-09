@@ -1,5 +1,7 @@
+<!-- Nav Component HTML -->
 <div class="grid grid-cols-5 sm:hidden">
    <div class="col-span-1 flex items-center">
+      <!-- Sidebar toggle button (visible on mobile) -->
       <button id="toggleSidebar" (click)="toggleSidebar($event)" type="button"
          class="items-center p-2 mt-2 ms-3 text-sm text-gray-900 rounded-lg sm:hidden">
          <span class="sr-only">Open sidebar</span>
@@ -11,19 +13,18 @@
    </div>
 </div>
 
-<aside id="logo-sidebar"
-   class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform"
-   [class.-translate-x-full]="!sidebarOpen"
-   aria-label="Sidebar"
+<!-- The sidebar -->
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform"
+   [class.sm:translate-x-0]="true" [class.-translate-x-full]="!sidebarOpen && isMobile" aria-label="Sidebar"
    (click)="$event.stopPropagation()">
    <div class="h-full flex flex-col px-2 py-4 overflow-y-auto bg-background">
-      <a href="#" class="flex items-center ps-2.5 mb-5" data-drawer-target="logo-sidebar"
-         data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button">
+      <a (click)="toggleSidebar($event)" class="flex items-center ps-2.5 mb-5">
          <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
          </svg>
-         <span class="self-center text-xl text-white font-semibold whitespace-nowrap dark:text-white ml-3">SmartBartender&trade;
+         <span
+            class="self-center text-xl text-white font-semibold whitespace-nowrap dark:text-white ml-3">SmartBartender&trade;
          </span>
       </a>
 
@@ -85,19 +86,6 @@
 
       <!-- Align User and Log out buttons at the bottom -->
       <ul class="mt-auto space-y-2 font-medium">
-         <!-- <li>
-            <a href="#"
-               class="flex items-center p-2 text-white rounded-lg hover:bg-white hover:text-background dark:hover:bg-white">
-               <svg class="w-[26px] h-[26px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                  height="24" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd"
-                     d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
-                     clip-rule="evenodd" />
-               </svg>
-
-               <span class="flex-1 ms-3 whitespace-nowrap"></span>
-            </a>
-         </li> -->
          <li>
             <a (click)="logout()"
                class="flex items-center p-2 text-white-900 rounded-lg dark:text-white hover:bg-white hover:text-background dark:hover:bg-white group">
