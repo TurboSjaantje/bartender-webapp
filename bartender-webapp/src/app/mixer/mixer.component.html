@@ -1,10 +1,10 @@
-<!-- <div class="grid grid-cols-5">
+<div class="grid grid-cols-5">
     <app-nav class="col-span-1"></app-nav>
     <div class="col-span-4 flex items-stretch justify-end">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black self-end m-3 mr-4">Mixer</h5>
     </div>
 </div>
-<div class="mobile-container block sm:hidden p-2"><!-- Responsive form container -->
+<div class="mobile-container block sm:hidden p-2">
     <div class="bg-white p-6 rounded-lg shadow-lg">
         <!-- Form for managing the sliders -->
         <form [formGroup]="mixerForm">
@@ -47,15 +47,16 @@
             <!-- Save Button -->
             <div class="mt-8">
                 <button (click)="saveMixer()" [disabled]="!isFormValid()"
-                [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': isFormValid(), 'bg-gray-400 text-gray-700 cursor-not-allowed': !isFormValid()}"
-                class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition">
-                Save
+                    [ngClass]="{'bg-primary focus:bg-white focus:border border-primary focus:text-primary text-white': isFormValid(), 'bg-gray-400 text-gray-700 cursor-not-allowed': !isFormValid()}"
+                    class="w-full font-bold py-3 px-6 rounded-lg focus:outline-none transition">
+                    Save
                 </button>
             </div>
         </form>
     </div>
 </div>
-<div class="desktop-container hidden sm:block ml-64 p-2 mt -2"><!-- Responsive form container -->
+<div class="desktop-container hidden sm:block ml-64 p-2 mt -2">
+    <!-- Responsive form container -->
     <div class="bg-white p-6 rounded-lg shadow-lg">
         <!-- Form for managing the sliders -->
         <form [formGroup]="mixerForm">
@@ -105,4 +106,4 @@
             </div>
         </form>
     </div>
-</div> -->
+</div>

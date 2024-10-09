@@ -1,0 +1,8 @@
+/* TailwindCSS class in your styles file or in your global styles */
+.translate-x-full {
+    transform: translateX(100%);
+ }
+ .-translate-x-full {
+    transform: translateX(-100%);
+ }
+ 
